@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+
+# checkpoints / outputs
+output/
+*.pth
+*.ckpt
+
+dataset/
+pretrain/
+tmp_build/
+
+**/*.egg-info/
+**/*.so
+**/*.o
+**/*.cuda.o
+**/.ninja_deps
+**/.ninja_log
+**/build.ninja
+build/
+**/build/
+dist/
+**/dist/
+
+.vscode/
+
+

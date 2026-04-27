@@ -1,0 +1,61 @@
+exp:
+  data_name: airplane
+  exp_name: predict
+  out_dir: output
+
+train:
+  seed: 21
+  optim: adam
+  lr: 0.001
+  weight_decay: 0.0
+  lr_decay_step: 20
+  gamma: 0.5
+  num_workers: 4
+
+  epochs: 400
+  batch_size: 256
+  print_rate: 50
+  save_rate: 200
+  ckpt_dir: pretrain/psp/pspnet.ckpt
+
+test:
+  patch_rate: 3
+  patch_pts_num: 256
+  up_rate: 16
+  ckpt_dir: pretrain/psp/pspnet.ckpt
+
+data:
+  train_dir: ""
+  test_dir: dataset/psp/test
+
+model:
+  encoder:
+    k: 16
+    encoder_dim: 64
+    encoder_bn: true
+    global_mlp: true
+    out_dim: 64
+
+  decoder:
+    out_dim: 64
+
+    up_rate: 4
+    simple: true
+
+    conv_radius: 0.8
+    neighbor_limits: 30
+    kernel_radius: 0.3
+    kernel_point_receptive_radius: 0.2
+    num_kernel_points: 15
+    in_dim: 64
+    kp_dim: 64
+    is_kp_bn: true
+    is_kp_bias: false
+    rigid_scale: 0.625
+    query_scale: 1.0
+
+    head_num: 4
+    trans_num: 2
+    trans_dim: 128
+    is_attn_bn: false
+
